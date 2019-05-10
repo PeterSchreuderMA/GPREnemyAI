@@ -30,7 +30,7 @@ public class EnemyMovment : MonoBehaviour
             return;
 
         // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
+        //agent.destination = points[destPoint].position;
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
@@ -38,10 +38,25 @@ public class EnemyMovment : MonoBehaviour
     }
 
 
+    public bool MoveToTarget(Vector3 _target, float _speed, float _maxDistanceBetween)
+    {
+        bool _return = false;
+
+        agent.destination = _target;
+
+        if (agent.remainingDistance < _maxDistanceBetween)
+            _return = true;
+
+        return _return;
+    }
+
+
     void Update()
     {
+        //if (!agent.pathPending)
+        //    return;
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (MoveToTarget(points[destPoint].position, 6f, 1))
             GotoNextPoint();
     }
 }
