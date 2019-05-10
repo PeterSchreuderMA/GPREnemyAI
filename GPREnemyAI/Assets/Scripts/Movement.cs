@@ -5,7 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float speed,
+                  jumpForce;
+
     //wasd movement
     void Update()
     {
@@ -24,6 +26,11 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.position += Vector3.up * jumpForce * Time.deltaTime;
         }
 
     }
