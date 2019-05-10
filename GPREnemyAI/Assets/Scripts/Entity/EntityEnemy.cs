@@ -21,6 +21,8 @@ public class EntityEnemy : Entity
     public float enemyAttackRange = 1f;
     public float enemySpotRange = 6f;
 
+    public float enemyFov = 130f;
+
     public AIState enemyStateCurrent = AIState.Idle;
 
     //---------------
